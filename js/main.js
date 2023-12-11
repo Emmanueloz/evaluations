@@ -1,5 +1,10 @@
-import { ListQuestion } from "./components/ListQuestion.js";
 import { QuestionEditor } from "./components/QuestionEditor.js";
 
 customElements.define("question-editor", QuestionEditor);
-customElements.define("list-question", ListQuestion);
+const listQuestion = document.getElementById("ListQuestion");
+const btnAddQuestion = document.getElementById("btnAddQuestion");
+
+btnAddQuestion.addEventListener("click", () => {
+  const question = new QuestionEditor();
+  listQuestion.append(question);
+});
