@@ -1,8 +1,9 @@
-import { ContextListRadioInput } from "../context/contextListRadioInput.js";
 import { RadioInput } from "./RadioInput.js";
 
 export class ListRadioInput extends HTMLElement {
   id = this.getAttribute("id");
+  countRadioInput = 0;
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -13,10 +14,21 @@ export class ListRadioInput extends HTMLElement {
       this.addRadioInput();
     }
   }
+
+  sumCountRadioInput() {
+    this.countRadioInput++;
+    console.log(this.countRadioInput);
+  }
+
+  resCountRadioInput() {
+    this.countRadioInput--;
+    console.log(this.countRadioInput);
+  }
+
   addRadioInput() {
     console.log("agregar radio input");
-    ContextListRadioInput.sumCountRadioInput();
-    this.section.append(new RadioInput());
+    this.sumCountRadioInput();
+    this.section.append(new RadioInput(this));
   }
   connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
@@ -24,7 +36,6 @@ export class ListRadioInput extends HTMLElement {
           @import "../../css/ListRadioInput.css";
         </style>
         <section id="${this.id}">
-          <radio-input></radio-input>
           <div>
             <button>Agregar</button>
           </div>
@@ -34,6 +45,7 @@ export class ListRadioInput extends HTMLElement {
     this.button = this.shadowRoot.querySelector("button");
     this.button.addEventListener("click", this);
     this.section = this.shadowRoot.querySelector("section");
+    this.addRadioInput();
   }
   disconnectedCallback() {}
 }

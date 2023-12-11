@@ -1,8 +1,7 @@
-import { ContextListRadioInput } from "../context/contextListRadioInput.js";
-
 export class RadioInput extends HTMLElement {
-  constructor() {
+  constructor(listRadioInput) {
     super();
+    this.listRadioInput = listRadioInput;
     this.attachShadow({ mode: "open" });
   }
   handleEvent(event) {
@@ -12,19 +11,19 @@ export class RadioInput extends HTMLElement {
   }
 
   deleteRadioInput() {
-    if (ContextListRadioInput.countRadioInput == 1) {
+    if (this.listRadioInput.countRadioInput == 1) {
       return;
     }
-    ContextListRadioInput.resCountRadioInput();
-    console.log(ContextListRadioInput.countRadioInput);
+    this.listRadioInput.resCountRadioInput();
+    console.log(this.listRadioInput.countRadioInput);
     this.remove();
   }
 
   connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
     <div>
-        <input type="radio">
-        <input type="text" >
+        <input type="radio" name="radio-input" disabled>
+        <input type="text" placeholder="Opción" >
         <button type="button" >Eliminar</button>
     </div>
     `;
