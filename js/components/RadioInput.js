@@ -21,11 +21,14 @@ export class RadioInput extends HTMLElement {
 
   connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
-    <div>
+    <style>
+      @import "../../css/RadioInput.css";
+    </style>
+    <li>
         <input type="radio" name="radio-input" disabled>
         <input type="text" placeholder="Opción" >
         <button type="button" >Eliminar</button>
-    </div>
+    </li>
     `;
     this.button = this.shadowRoot.querySelector("button");
     this.button.addEventListener("click", this);

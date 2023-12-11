@@ -28,14 +28,17 @@ export class ListRadioInput extends HTMLElement {
   addRadioInput() {
     console.log("agregar radio input");
     this.sumCountRadioInput();
-    this.section.append(new RadioInput(this));
+    this.list.append(new RadioInput(this));
   }
+
   connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
         <style>
           @import "../../css/ListRadioInput.css";
         </style>
         <section id="${this.id}">
+          <ul id="list">
+          </ul>
           <div>
             <button>Agregar</button>
           </div>
@@ -44,7 +47,7 @@ export class ListRadioInput extends HTMLElement {
 
     this.button = this.shadowRoot.querySelector("button");
     this.button.addEventListener("click", this);
-    this.section = this.shadowRoot.querySelector("section");
+    this.list = this.shadowRoot.querySelector("#list");
     this.addRadioInput();
   }
   disconnectedCallback() {}

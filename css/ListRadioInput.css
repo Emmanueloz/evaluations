@@ -1,15 +1,23 @@
 section {
   width: 100%;
-  min-height: 100px;
   position: relative;
   display: inline-block;
 }
 
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+div {
+  display: flex;
+  position: relative;
+  bottom: 0px;
+  justify-content: flex-end;
+  margin: 10px 0px;
+}
+
 button {
-  position: absolute;
-  display: inline-block;
-  right: 1px;
-  bottom: 5px;
   box-shadow: 4px 4px 8px #92abe2;
   background-color: #125bf7;
   border: 0px;
