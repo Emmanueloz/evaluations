@@ -1,0 +1,21 @@
+section {
+  width: 100%;
+  min-height: 100px;
+  position: relative;
+  display: inline-block;
+}
+
+button {
+  position: absolute;
+  display: inline-block;
+  right: 1px;
+  bottom: 5px;
+  box-shadow: 4px 4px 8px #92abe2;
+  background-color: #125bf7;
+  border: 0px;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 13pt;
+  font-weight: bold;
+  color: whitesmoke;
+}

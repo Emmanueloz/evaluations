@@ -44,7 +44,7 @@ export class QuestionEditor extends HTMLElement {
                 <option value="casilla de verificación">Casilla de verificación</option>
             </select>
           </div>
-          <section id="answersContainer">opción multiple</section>
+          <list-radio-input id="answersContainer"></list-radio-input>
           <section class="btn-section-button">
             <button type="button">Eliminar</button>
           </section>
