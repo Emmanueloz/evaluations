@@ -32,18 +32,22 @@ export class QuestionEditor extends HTMLElement {
 
   connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
+        <style>
+          @import "../../css/QuestionEditor.css";
+        </style>
         <article>
-            <input type="text" placeholder="escribe tu pregunta">
-            <label for="typeQuestion">Tipo de pregunta</label>
+          <div>
+            <input id="question" type="text" placeholder="Escribe tu pregunta">
             <select id="typeQuestion">
                 <option value="opción multiple">Opción multiple</option>
                 <option value="respuesta abierta">Respuesta abierta</option>
                 <option value="casilla de verificación">Casilla de verificación</option>
             </select>
-            <section id="answersContainer">opción multiple</section>
-            <section class="btn-section-button">
-              <button type="button">Eliminar</button>
-            </section>
+          </div>
+          <section id="answersContainer">opción multiple</section>
+          <section class="btn-section-button">
+            <button type="button">Eliminar</button>
+          </section>
         </article>
     `;
     this.selected = this.shadowRoot.querySelector("select");
