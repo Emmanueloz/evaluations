@@ -15,7 +15,6 @@ export class QuestionEditor extends HTMLElement {
   }
 
   handleOnSelect(e) {
-    console.log(e.target.value);
     this.answersContainer.innerHTML = `${e.target.value}`;
   }
 
@@ -29,11 +28,15 @@ export class QuestionEditor extends HTMLElement {
                 <option value="respuesta abierta">Respuesta abierta</option>
                 <option value="casilla de verificación">Casilla de verificación</option>
             </select>
-            <section id="answersContainer" ></section>
+            <section>opción multiple</section>
         </article>
     `;
-    this.selected = this.shadowRoot.getElementById("typeQuestion");
-    this.answersContainer = this.shadowRoot.getElementById("answersContainer");
+    this.selected = this.shadowRoot.querySelector("select");
+    this.answersContainer = this.shadowRoot.querySelector("section");
     this.selected.addEventListener("change", this);
+  }
+
+  disconnectedCallback() {
+    this.button.removeEventListener("change", this);
   }
 }
