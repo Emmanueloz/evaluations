@@ -7,6 +7,7 @@
 body {
   background-color: bisque;
   display: flex;
+  position: relative;
   flex-direction: column;
   width: 100vw;
   min-height: 100vh;
@@ -19,6 +20,12 @@ main {
 }
 
 #btnAddQuestion {
+  display: inline-block;
+  position: fixed;
+  right: 5vw;
+  height: 40px;
+  bottom: 5vh;
+  box-shadow: 4px 4px 8px #92abe2;
   background-color: #125bf7;
   border: 0px;
   border-radius: 5px;
