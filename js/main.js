@@ -1,7 +1,9 @@
 import { ContextListQuestion } from "./context/contextListQuestion.js";
+import { RadioInput } from "./components/RadioInput.js";
 import { ListRadioInput } from "./components/ListRadioInput.js";
 import { QuestionEditor } from "./components/QuestionEditor.js";
 
+customElements.define("radio-input", RadioInput);
 customElements.define("list-radio-input", ListRadioInput);
 customElements.define("question-editor", QuestionEditor);
 const listQuestion = document.getElementById("ListQuestion");
