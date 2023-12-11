@@ -4,7 +4,6 @@ export class QuestionEditor extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.render();
   }
   /**
    *
@@ -31,7 +30,7 @@ export class QuestionEditor extends HTMLElement {
     this.remove();
   }
 
-  render() {
+  connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
         <article>
             <input type="text" placeholder="escribe tu pregunta">
