@@ -1,2 +1,3 @@
-const evaluationTitle = document.getElementById("evaluationTitle");
-const evaluationTitleItem = document.getElementById("evaluationTitleItem");
+import { QuestionEditor } from "./components/QuestionEditor.js";
+
+customElements.define("question-editor", QuestionEditor);
