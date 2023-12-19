@@ -1,5 +1,6 @@
 import { ContextListQuestion } from "../context/contextListQuestion.js";
 import { ListRadioInput } from "./ListRadioInput.js";
+import { ListCheckBoxInput } from "./ListCheckBoxInput.js";
 import { TextAreaInput } from "./TextAreaInput.js";
 
 const TYPE_QUESTION = {
@@ -34,7 +35,8 @@ export class QuestionEditor extends HTMLElement {
       //this.answersContainer.innerHTML = "Respuesta abierta";
       this.answersContainer.append(new TextAreaInput());
     } else if (e.target.value === TYPE_QUESTION.CHECK_BOX) {
-      this.answersContainer.innerHTML = "Casilla de verificación";
+      //this.answersContainer.innerHTML = "Casilla de verificación";
+      this.answersContainer.append(new ListCheckBoxInput());
     }
   }
 

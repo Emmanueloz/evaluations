@@ -1,7 +1,8 @@
 export class RadioInput extends HTMLElement {
-  constructor(listRadioInput) {
+  constructor(listRadioInput, typeInput) {
     super();
     this.listRadioInput = listRadioInput;
+    this.typeInput = typeInput;
     this.attachShadow({ mode: "open" });
   }
   handleEvent(event) {
@@ -25,7 +26,7 @@ export class RadioInput extends HTMLElement {
       @import "../../css/RadioInput.css";
     </style>
     <li>
-        <input type="radio" name="radio-input" disabled>
+        <input type="${this.typeInput}" disabled>
         <input type="text" placeholder="Opción" >
         <button type="button" >Eliminar</button>
     </li>

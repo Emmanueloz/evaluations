@@ -1,8 +1,8 @@
 import { RadioInput } from "./RadioInput.js";
 
-export class ListRadioInput extends HTMLElement {
+export class ListCheckBoxInput extends HTMLElement {
   id = this.getAttribute("id");
-  countRadioInput = 0;
+  countCheckBoxInput = 0;
 
   constructor() {
     super();
@@ -11,24 +11,24 @@ export class ListRadioInput extends HTMLElement {
 
   handleEvent(event) {
     if (event.type === "click") {
-      this.addRadioInput();
+      this.addCheckBoxInput();
     }
   }
 
-  sumCountRadioInput() {
-    this.countRadioInput++;
-    console.log(this.countRadioInput);
+  sumCountCheckBoxInput() {
+    this.countCheckBoxInput++;
+    console.log(this.countCheckBoxInput);
   }
 
-  resCountRadioInput() {
-    this.countRadioInput--;
-    console.log(this.countRadioInput);
+  resCountCheckBoxInput() {
+    this.countCheckBoxInput--;
+    console.log(this.countCheckBoxInput);
   }
 
-  addRadioInput() {
-    console.log("agregar radio input");
-    this.sumCountRadioInput();
-    this.list.append(new RadioInput(this, "radio"));
+  addCheckBoxInput() {
+    console.log("agregar CheckBox input");
+    this.sumCountCheckBoxInput();
+    this.list.append(new RadioInput(this, "checkbox"));
   }
 
   connectedCallback() {
@@ -48,7 +48,7 @@ export class ListRadioInput extends HTMLElement {
     this.button = this.shadowRoot.querySelector("button");
     this.button.addEventListener("click", this);
     this.list = this.shadowRoot.querySelector("#list");
-    this.addRadioInput();
+    this.addCheckBoxInput();
   }
   disconnectedCallback() {}
 }
