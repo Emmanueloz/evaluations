@@ -8,10 +8,14 @@ export class TextAreaInput extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.innerHTML = /*html*/ `
     <style>
+      @import "../../css/TextAreaInput.css";
     </style>
     <textarea id="" disabled>Respuesta</textarea>
-    <div>
-    <input type="number">
+    <div class="btn-section-button" >
+    <label>
+      Tamaño de la respuesta
+      <input type="number" value="100"  min="50" max="500">
+    </label>
     </div>
     `;
   }
