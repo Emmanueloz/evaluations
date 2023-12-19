@@ -1,4 +1,11 @@
 import { ContextListQuestion } from "../context/contextListQuestion.js";
+import { ListRadioInput } from "./ListRadioInput.js";
+
+const TYPE_QUESTION = {
+  MULTIPLE_OPTION: "multiple-option",
+  OPEN_RESPONSE: "open-response",
+  CHECK_BOX: "check-box",
+};
 
 export class QuestionEditor extends HTMLElement {
   constructor() {
@@ -18,7 +25,15 @@ export class QuestionEditor extends HTMLElement {
   }
 
   handleOnSelect(e) {
-    this.answersContainer.innerHTML = `${e.target.value}`;
+    console.log(e.target.value);
+    this.answersContainer.innerHTML = "";
+    if (e.target.value === TYPE_QUESTION.MULTIPLE_OPTION) {
+      this.answersContainer.append(new ListRadioInput());
+    } else if (e.target.value === TYPE_QUESTION.OPEN_RESPONSE) {
+      this.answersContainer.innerHTML = "Respuesta abierta";
+    } else if (e.target.value === TYPE_QUESTION.CHECK_BOX) {
+      this.answersContainer.innerHTML = "Casilla de verificación";
+    }
   }
 
   deleteQuestion() {
@@ -39,12 +54,14 @@ export class QuestionEditor extends HTMLElement {
           <div>
             <input id="question" type="text" placeholder="Escribe tu pregunta">
             <select id="typeQuestion">
-                <option value="opción multiple">Opción multiple</option>
-                <option value="respuesta abierta">Respuesta abierta</option>
-                <option value="casilla de verificación">Casilla de verificación</option>
+                <option value="${TYPE_QUESTION.MULTIPLE_OPTION}">Opción multiple</option>
+                <option value="${TYPE_QUESTION.OPEN_RESPONSE}">Respuesta abierta</option>
+                <option value="${TYPE_QUESTION.CHECK_BOX}">Casilla de verificación</option>
             </select>
           </div>
-          <list-radio-input id="answersContainer"></list-radio-input>
+          <section id="answersContainer">
+            <list-radio-input ></list-radio-input>          
+          </section>
           <section class="btn-section-button">
             <button type="button">Eliminar</button>
           </section>
