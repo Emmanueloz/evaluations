@@ -12,6 +12,7 @@ customElements.define("list-checkbox-input", ListCheckBoxInput);
 customElements.define("question-editor", QuestionEditor);
 const listQuestion = document.getElementById("ListQuestion");
 const btnAddQuestion = document.getElementById("btnAddQuestion");
+const btnSave = document.getElementById("btnSave");
 console.log(ContextListQuestion.countQuestion);
 
 btnAddQuestion.addEventListener("click", () => {
@@ -19,4 +20,20 @@ btnAddQuestion.addEventListener("click", () => {
   ContextListQuestion.sumCountQuestion();
   console.log(ContextListQuestion.countQuestion);
   listQuestion.append(question);
+});
+
+const evaluation = {
+  title: "",
+  questions: [],
+};
+
+btnSave.addEventListener("click", () => {
+  evaluation.questions = [];
+  for (const [key, value] of Object.entries(listQuestion.children)) {
+    const objectQuestion = value.objectQuestion;
+    objectQuestion.id = key;
+    evaluation.questions.push(objectQuestion);
+  }
+
+  console.log(evaluation);
 });

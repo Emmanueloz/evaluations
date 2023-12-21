@@ -10,26 +10,19 @@ const TYPE_QUESTION = {
 };
 
 export class QuestionEditor extends HTMLElement {
-  questionValue = "";
-  typeQuestion = "";
+  objectQuestion = {
+    id: null,
+    questionValue: "",
+    typeQuestion: TYPE_QUESTION.MULTIPLE_OPTION,
+  };
 
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
-  /*
-  handleEvent(event) {
-    if (event.type === "change") {
-      this.handleOnSelect(event);
-    } else if (event.type === "click") {
-      this.deleteQuestion();
-    } else {
-      this.handleChangeQuestion(event);
-    }
-  }*/
 
-  handleChangeQuestion(e) {
-    console.log(e.type);
+  handleInputQuestion(e) {
+    this.objectQuestion.questionValue = e.target.value;
   }
 
   handleOnSelect(e) {
@@ -42,7 +35,7 @@ export class QuestionEditor extends HTMLElement {
     } else if (e.target.value === TYPE_QUESTION.CHECK_BOX) {
       this.answersContainer.append(new ListCheckBoxInput());
     }
-    this.typeQuestion = e.target.value;
+    this.objectQuestion.typeQuestion = e.target.value;
   }
 
   deleteQuestion() {
@@ -83,8 +76,8 @@ export class QuestionEditor extends HTMLElement {
     this.selected.addEventListener("change", this.handleOnSelect.bind(this));
     this.button.addEventListener("click", this.deleteQuestion.bind(this));
     this.question.addEventListener(
-      "change",
-      this.handleChangeQuestion.bind(this)
+      "input",
+      this.handleInputQuestion.bind(this)
     );
   }
 
@@ -92,8 +85,8 @@ export class QuestionEditor extends HTMLElement {
     this.selected.removeEventListener("change", this.handleOnSelect.bind(this));
     this.button.removeEventListener("click", this.deleteQuestion.bind(this));
     this.question.removeEventListener(
-      "change",
-      this.handleChangeQuestion.bind(this)
+      "input",
+      this.handleInputQuestion.bind(this)
     );
   }
 }
