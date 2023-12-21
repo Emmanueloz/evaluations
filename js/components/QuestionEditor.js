@@ -10,20 +10,26 @@ const TYPE_QUESTION = {
 };
 
 export class QuestionEditor extends HTMLElement {
+  questionValue = "";
+  typeQuestion = "";
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
-  /**
-   *
-   * @param {*} event
-   */
+  /*
   handleEvent(event) {
     if (event.type === "change") {
       this.handleOnSelect(event);
     } else if (event.type === "click") {
       this.deleteQuestion();
+    } else {
+      this.handleChangeQuestion(event);
     }
+  }*/
+
+  handleChangeQuestion(e) {
+    console.log(e.type);
   }
 
   handleOnSelect(e) {
@@ -32,12 +38,11 @@ export class QuestionEditor extends HTMLElement {
     if (e.target.value === TYPE_QUESTION.MULTIPLE_OPTION) {
       this.answersContainer.append(new ListRadioInput());
     } else if (e.target.value === TYPE_QUESTION.OPEN_RESPONSE) {
-      //this.answersContainer.innerHTML = "Respuesta abierta";
       this.answersContainer.append(new TextAreaInput());
     } else if (e.target.value === TYPE_QUESTION.CHECK_BOX) {
-      //this.answersContainer.innerHTML = "Casilla de verificación";
       this.answersContainer.append(new ListCheckBoxInput());
     }
+    this.typeQuestion = e.target.value;
   }
 
   deleteQuestion() {
@@ -71,15 +76,24 @@ export class QuestionEditor extends HTMLElement {
           </section>
         </article>
     `;
+    this.question = this.shadowRoot.querySelector("#question");
     this.selected = this.shadowRoot.querySelector("select");
     this.answersContainer = this.shadowRoot.querySelector("#answersContainer");
     this.button = this.shadowRoot.querySelector("button");
-    this.selected.addEventListener("change", this);
-    this.button.addEventListener("click", this);
+    this.selected.addEventListener("change", this.handleOnSelect.bind(this));
+    this.button.addEventListener("click", this.deleteQuestion.bind(this));
+    this.question.addEventListener(
+      "change",
+      this.handleChangeQuestion.bind(this)
+    );
   }
 
   disconnectedCallback() {
-    this.button.removeEventListener("change", this);
-    this.button.removeEventListener("click", this);
+    this.selected.removeEventListener("change", this.handleOnSelect.bind(this));
+    this.button.removeEventListener("click", this.deleteQuestion.bind(this));
+    this.question.removeEventListener(
+      "change",
+      this.handleChangeQuestion.bind(this)
+    );
   }
 }

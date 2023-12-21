@@ -12,11 +12,11 @@ export class RadioInput extends HTMLElement {
   }
 
   deleteRadioInput() {
-    if (this.listRadioInput.countRadioInput == 1) {
+    if (this.listRadioInput.countInput == 1) {
       return;
     }
-    this.listRadioInput.resCountRadioInput();
-    console.log(this.listRadioInput.countRadioInput);
+    this.listRadioInput.resCountInput();
+    console.log(this.listRadioInput.countInput);
     this.remove();
   }
 
@@ -34,5 +34,7 @@ export class RadioInput extends HTMLElement {
     this.button = this.shadowRoot.querySelector("button");
     this.button.addEventListener("click", this);
   }
-  disconnectedCallback() {}
+  disconnectedCallback() {
+    this.button.removeEventListener("click", this);
+  }
 }
