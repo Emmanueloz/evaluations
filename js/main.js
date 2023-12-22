@@ -30,7 +30,7 @@ const evaluation = {
 btnSave.addEventListener("click", () => {
   evaluation.questions = [];
   for (const [key, value] of Object.entries(listQuestion.children)) {
-    const objectQuestion = value.objectQuestion;
+    const objectQuestion = value.dataQuestion();
     objectQuestion.id = key;
     evaluation.questions.push(objectQuestion);
   }

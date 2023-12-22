@@ -8,6 +8,13 @@ export class BaseListInput extends HTMLElement {
   }
   countInput = 0;
 
+  dataAnswer() {
+    return {
+      answers: null,
+      lengthAnswers: null,
+    };
+  }
+
   handleEvent(event) {
     if (event.type === "click") {
       this.addInput();
@@ -50,5 +57,7 @@ export class BaseListInput extends HTMLElement {
     this.addInput();
   }
 
-  disconnectedCallback() {}
+  disconnectedCallback() {
+    this.button.removeEventListener("click", this);
+  }
 }

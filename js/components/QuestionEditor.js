@@ -10,11 +10,20 @@ const TYPE_QUESTION = {
 };
 
 export class QuestionEditor extends HTMLElement {
-  objectQuestion = {
-    id: null,
-    questionValue: "",
-    typeQuestion: TYPE_QUESTION.MULTIPLE_OPTION,
-  };
+  dataQuestion() {
+    const { answers, lengthAnswers } =
+      this.answersContainer.children[0].dataAnswer();
+    return {
+      id: null,
+      questionValue: this.questionValue,
+      typeQuestion: this.typeQuestion,
+      answers,
+      lengthAnswers,
+    };
+  }
+
+  questionValue = "";
+  typeQuestion = TYPE_QUESTION.MULTIPLE_OPTION;
 
   constructor() {
     super();
@@ -22,7 +31,7 @@ export class QuestionEditor extends HTMLElement {
   }
 
   handleInputQuestion(e) {
-    this.objectQuestion.questionValue = e.target.value;
+    this.questionValue = e.target.value;
   }
 
   handleOnSelect(e) {
@@ -35,7 +44,7 @@ export class QuestionEditor extends HTMLElement {
     } else if (e.target.value === TYPE_QUESTION.CHECK_BOX) {
       this.answersContainer.append(new ListCheckBoxInput());
     }
-    this.objectQuestion.typeQuestion = e.target.value;
+    this.typeQuestion = e.target.value;
   }
 
   deleteQuestion() {
