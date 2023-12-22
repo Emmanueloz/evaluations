@@ -9,8 +9,12 @@ export class BaseListInput extends HTMLElement {
   countInput = 0;
 
   dataAnswer() {
+    const answers = [];
+    for (const item of this.list.children) {
+      answers.push(item.inputValue);
+    }
     return {
-      answers: null,
+      answers,
       lengthAnswers: null,
     };
   }
