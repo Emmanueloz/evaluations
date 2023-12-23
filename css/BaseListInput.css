@@ -15,6 +15,7 @@ div {
   bottom: 0px;
   justify-content: flex-end;
   margin: 10px 0px;
+  margin-bottom: 0px;
 }
 
 button {

@@ -1,4 +1,4 @@
-import { RadioInput } from "./RadioInput.js";
+import { InputItem } from "./InputItem.js";
 
 export class BaseListInput extends HTMLElement {
   constructor(type) {
@@ -38,13 +38,13 @@ export class BaseListInput extends HTMLElement {
   addInput() {
     console.log(`Agregar ${this.type} input`);
     this.sumCountInput();
-    this.list.append(new RadioInput(this, this.type));
+    this.list.append(new InputItem(this, this.type));
   }
 
   connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
       <style>
-        @import "../../css/ListRadioInput.css";
+        @import "../../css/BaseListInput.css";
       </style>
       <section id="${this.id}">
         <ul id="list">

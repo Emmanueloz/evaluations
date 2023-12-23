@@ -1,15 +1,16 @@
-export class RadioInput extends HTMLElement {
+export class InputItem extends HTMLElement {
   inputValue = "Opción";
-  constructor(listRadioInput, typeInput) {
+
+  constructor(listInput, typeInput) {
     super();
-    this.listRadioInput = listRadioInput;
+    this.listInput = listInput;
     this.typeInput = typeInput;
     this.attachShadow({ mode: "open" });
   }
 
   handleEvent(event) {
     if (event.type === "click") {
-      this.deleteRadioInput();
+      this.deleteInputItem();
     } else if (event.type === "input") {
       this.handleOnInput(event);
     }
@@ -19,19 +20,19 @@ export class RadioInput extends HTMLElement {
     this.inputValue = e.target.value;
   }
 
-  deleteRadioInput() {
-    if (this.listRadioInput.countInput == 1) {
+  deleteInputItem() {
+    if (this.listInput.countInput == 1) {
       return;
     }
-    this.listRadioInput.resCountInput();
-    console.log(this.listRadioInput.countInput);
+    this.listInput.resCountInput();
+    console.log(this.listInput.countInput);
     this.remove();
   }
 
   connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
     <style>
-      @import "../../css/RadioInput.css";
+      @import "../../css/InputItem.css";
     </style>
     <li>
         <input type="${this.typeInput}" disabled>
@@ -44,6 +45,7 @@ export class RadioInput extends HTMLElement {
     this.input.addEventListener("input", this);
     this.button.addEventListener("click", this);
   }
+
   disconnectedCallback() {
     this.button.removeEventListener("click", this);
   }

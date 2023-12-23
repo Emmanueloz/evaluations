@@ -1,5 +1,5 @@
 import { ContextListQuestion } from "../context/contextListQuestion.js";
-import { ListRadioInput } from "./ListRadioInput.js";
+import { ListRadioItem } from "./ListRadioInput.js";
 import { ListCheckBoxInput } from "./ListCheckBoxInput.js";
 import { TextAreaInput } from "./TextAreaInput.js";
 
@@ -38,7 +38,7 @@ export class QuestionEditor extends HTMLElement {
     console.log(e.target.value);
     this.answersContainer.innerHTML = "";
     if (e.target.value === TYPE_QUESTION.MULTIPLE_OPTION) {
-      this.answersContainer.append(new ListRadioInput());
+      this.answersContainer.append(new ListRadioItem());
     } else if (e.target.value === TYPE_QUESTION.OPEN_RESPONSE) {
       this.answersContainer.append(new TextAreaInput());
     } else if (e.target.value === TYPE_QUESTION.CHECK_BOX) {
