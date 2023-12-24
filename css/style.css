@@ -4,23 +4,30 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 body {
-  background-color: bisque;
+  background-color: #c9b398;
   display: flex;
-  position: relative;
   flex-direction: column;
   width: 100vw;
   min-height: 100vh;
 }
+
+header{
+  background-color: bisque;
+}
+
 main {
   width: 100vw;
   background-color: #c9b398;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
   flex: 1;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
-footer {
+#container-btn {
   display: flex;
   background-color: bisque;
   justify-content: flex-end;
@@ -33,13 +40,55 @@ footer {
   bottom: 0px;
 }
 
-#btnAddQuestion {
+.btn{
   box-shadow: 4px 4px 8px #92abe2;
-  background-color: #125bf7;
   border: 0px;
   border-radius: 5px;
   padding: 5px;
   font-size: 13pt;
   font-weight: bold;
+}
+
+#btnSave{
+  background-color: #3f3fe0;
   color: whitesmoke;
 }
+
+#btnAddQuestion {
+  background-color: #125bf7;
+  color: whitesmoke;
+}
+
+@media screen and (min-width: 500px) {
+  #ListQuestion{
+    width: 90dvw;
+    margin: 0 auto;
+    background-color: #dbc5ab;
+    flex: 1;
+  }
+
+  main{
+    margin-bottom: 0px;
+
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #ListQuestion{
+    width: 650px;
+    margin: 0 auto;
+    padding: 0 25px;
+  }
+
+  #container-btn{
+    width: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    left: 50%;
+    transform: translate(-50%);
+    margin-bottom: 20px;
+    border-radius: 25px;
+    box-shadow: -2px 2px 13px 2px rgba(166,166,166,1);
+  }
+}
+

@@ -3,20 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Teaching evaluation</title>
+    <title>Evaluación docente</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <h1>Pagina para crear evaluaciones docentes</h1>
+    <header>
+      <h1>Editor evaluaciones docentes</h1>
+    </header>
     <main>
+      
       <article id="ListQuestion">
         <question-editor></question-editor>
       </article>
+      <article id="container-btn">
+        <button class="btn" id="btnSave" type="button" >Guardar</button>
+        <button class="btn" id="btnAddQuestion" type="button">Agregar</button>
+      </article>
     </main>
-    <footer>
-      <button id="btnSave" type="button" >Guardar</button>
-      <button id="btnAddQuestion" type="button">Agregar</button>
-    </footer>
+    
     <script type="module" src="./js/context/contextListQuestion.js"></script>
     <script type="module" src="./js/components/InputItem.js"></script>
     <script type="module" src="./js/components/BaseListInput.js"></script>
