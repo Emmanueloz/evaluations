@@ -32,12 +32,13 @@ export class InputItem extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
     <style>
+      @import "../../css/Global.css";
       @import "../../css/InputItem.css";
     </style>
     <li>
         <input type="${this.typeInput}" disabled>
         <input id="answer" type="text" value="${this.inputValue}" >
-        <button type="button" >Eliminar</button>
+        <button class="btn-sm" type="button" >Eliminar</button>
     </li>
     `;
     this.input = this.shadowRoot.querySelector("#answer");

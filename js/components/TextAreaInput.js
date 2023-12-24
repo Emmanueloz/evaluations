@@ -27,6 +27,7 @@ export class TextAreaInput extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.innerHTML = /*html*/ `
     <style>
+      @import "../../css/BaseListInput.css";
       @import "../../css/TextAreaInput.css";
     </style>
     <textarea id="" disabled>Respuesta</textarea>
