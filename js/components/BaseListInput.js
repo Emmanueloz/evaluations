@@ -44,13 +44,14 @@ export class BaseListInput extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
       <style>
+        @import "../../css/Global.css";
         @import "../../css/BaseListInput.css";
       </style>
       <section id="${this.id}">
         <ul id="list">
         </ul>
         <div>
-          <button>Agregar</button>
+          <button class="btn" >Agregar</button>
         </div>
       </section> 
     `;

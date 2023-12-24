@@ -19,12 +19,6 @@ div {
 }
 
 button {
-  box-shadow: 4px 4px 8px #92abe2;
   background-color: #125bf7;
-  border: 0px;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 13pt;
-  font-weight: bold;
   color: whitesmoke;
 }

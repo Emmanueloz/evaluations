@@ -59,6 +59,7 @@ export class QuestionEditor extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
         <style>
+          @import "../../css/Global.css";
           @import "../../css/QuestionEditor.css";
         </style>
         <article>
@@ -74,7 +75,7 @@ export class QuestionEditor extends HTMLElement {
             <list-radio-input ></list-radio-input>          
           </section>
           <section class="btn-section-button">
-            <button type="button">Eliminar</button>
+            <button class="btn" type="button">Eliminar</button>
           </section>
         </article>
     `;
