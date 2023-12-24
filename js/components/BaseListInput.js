@@ -27,16 +27,16 @@ export class BaseListInput extends HTMLElement {
 
   sumCountInput() {
     this.countInput++;
-    console.log(this.countInput);
+    //console.log(this.countInput);
   }
 
   resCountInput() {
     this.countInput--;
-    console.log(this.countInput);
+    //console.log(this.countInput);
   }
 
   addInput() {
-    console.log(`Agregar ${this.type} input`);
+    //console.log(`Agregar ${this.type} input`);
     this.sumCountInput();
     this.list.append(new InputItem(this, this.type));
   }

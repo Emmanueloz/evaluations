@@ -35,7 +35,7 @@ export class QuestionEditor extends HTMLElement {
   }
 
   handleOnSelect(e) {
-    console.log(e.target.value);
+    //console.log(e.target.value);
     this.answersContainer.innerHTML = "";
     if (e.target.value === TYPE_QUESTION.MULTIPLE_OPTION) {
       this.answersContainer.append(new ListRadioItem());
@@ -52,7 +52,7 @@ export class QuestionEditor extends HTMLElement {
       return;
     }
     ContextListQuestion.resCountQuestion();
-    console.log(ContextListQuestion.countQuestion);
+    //console.log(ContextListQuestion.countQuestion);
     this.remove();
   }
 

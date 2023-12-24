@@ -27,6 +27,11 @@ main {
   margin-bottom: 60px;
 }
 
+#title{
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
 #container-btn {
   display: flex;
   background-color: bisque;
@@ -43,6 +48,7 @@ main {
 #btnSave{
   background-color: #3f3fe0;
   color: whitesmoke;
+  margin-right: 10px;
 }
 
 #btnAddQuestion {
@@ -51,6 +57,10 @@ main {
 }
 
 @media screen and (min-width: 500px) {
+  #btnSave{
+    margin-right: 0px;
+  }
+  
   #ListQuestion{
     width: 90dvw;
     margin: 0 auto;
@@ -65,6 +75,8 @@ main {
 }
 
 @media screen and (min-width: 1024px) {
+
+
   #ListQuestion{
     width: 650px;
     margin: 0 auto;

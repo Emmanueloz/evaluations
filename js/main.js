@@ -13,12 +13,12 @@ customElements.define("question-editor", QuestionEditor);
 const listQuestion = document.getElementById("ListQuestion");
 const btnAddQuestion = document.getElementById("btnAddQuestion");
 const btnSave = document.getElementById("btnSave");
-console.log(ContextListQuestion.countQuestion);
+//console.log(ContextListQuestion.countQuestion);
 
 btnAddQuestion.addEventListener("click", () => {
   const question = new QuestionEditor();
   ContextListQuestion.sumCountQuestion();
-  console.log(ContextListQuestion.countQuestion);
+  //console.log(ContextListQuestion.countQuestion);
   listQuestion.append(question);
 });
 
@@ -30,6 +30,9 @@ const evaluation = {
 btnSave.addEventListener("click", () => {
   evaluation.questions = [];
   for (const [key, value] of Object.entries(listQuestion.children)) {
+    if (value.id === "dataEvaluation") {
+      continue;
+    }
     const objectQuestion = value.dataQuestion();
     objectQuestion.id = key;
     evaluation.questions.push(objectQuestion);
