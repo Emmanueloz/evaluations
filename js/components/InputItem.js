@@ -25,7 +25,6 @@ export class InputItem extends HTMLElement {
       return;
     }
     this.listInput.resCountInput();
-    console.log(this.listInput.countInput);
     this.remove();
   }
 

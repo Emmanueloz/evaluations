@@ -1,6 +1,7 @@
 import { ContextListQuestion } from "./context/contextListQuestion.js";
 import { QuestionEditor } from "./components/QuestionEditor.js";
 import { generateEvaluation, evaluation } from "./generateEvaluation.js";
+import { id } from "./elements.js";
 
 import {
   titleValue,
@@ -9,7 +10,10 @@ import {
   btnSave,
 } from "./elements.js";
 
-generateEvaluation(evaluation);
+if (id.value !== "") {
+  generateEvaluation(evaluation);
+  console.log("editar");
+}
 // Evento para agregar un nuevo editor de pregunta
 btnAddQuestion.addEventListener("click", () => {
   const question = new QuestionEditor();

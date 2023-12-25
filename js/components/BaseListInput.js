@@ -54,7 +54,7 @@ export class BaseListInput extends HTMLElement {
   }
 
   addInput(inputValue = "Opción") {
-    console.log(this.countInput);
+    //console.log(this.countInput);
     this.sumCountInput();
     const newInputItem = new InputItem(this, this.type);
     newInputItem.inputValue = inputValue;

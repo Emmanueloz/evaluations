@@ -1,32 +1,19 @@
 import { titleValue, listQuestion } from "./elements.js";
 import { ContextListQuestion } from "./context/contextListQuestion.js";
-import { QuestionEditor, TYPE_QUESTION } from "./components/QuestionEditor.js";
+import { QuestionEditor } from "./components/QuestionEditor.js";
 
+/*
+{
+  id: 0,
+  questionValue: "Pregunta 1",
+  typeQuestion: TYPE_QUESTION.OPEN_RESPONSE,
+  answers: null,
+  lengthAnswers: 300,
+},
+ */
 export const evaluation = {
-  title: "Practicas 1",
-  questions: [
-    {
-      id: 0,
-      questionValue: "Pregunta 1",
-      typeQuestion: TYPE_QUESTION.OPEN_RESPONSE,
-      answers: null,
-      lengthAnswers: 300,
-    },
-    {
-      id: 1,
-      questionValue: "Pregunta 2",
-      typeQuestion: TYPE_QUESTION.CHECK_BOX,
-      answers: ["Op 1", "Op 2", "no se"],
-      lengthAnswers: null,
-    },
-    {
-      id: 2,
-      questionValue: "Pregunta 2",
-      typeQuestion: TYPE_QUESTION.MULTIPLE_OPTION,
-      answers: ["primera op", "Op 2", "opción multiple"],
-      lengthAnswers: null,
-    },
-  ],
+  title: "Titulo",
+  questions: [],
 };
 
 /**

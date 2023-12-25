@@ -13,7 +13,7 @@ export class TextAreaInput extends HTMLElement {
   }
 
   handleOnInput(e) {
-    console.log(e.target.value);
+    //console.log(e.target.value);
     this.length = e.target.value;
   }
 
