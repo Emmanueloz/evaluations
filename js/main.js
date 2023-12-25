@@ -9,6 +9,7 @@ import {
   btnSave,
 } from "./elements.js";
 
+generateEvaluation(evaluation);
 // Evento para agregar un nuevo editor de pregunta
 btnAddQuestion.addEventListener("click", () => {
   const question = new QuestionEditor();

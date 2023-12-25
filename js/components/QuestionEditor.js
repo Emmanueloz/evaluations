@@ -3,7 +3,7 @@ import { ListRadioItem } from "./ListRadioInput.js";
 import { ListCheckBoxInput } from "./ListCheckBoxInput.js";
 import { TextAreaInput } from "./TextAreaInput.js";
 
-const TYPE_QUESTION = {
+export const TYPE_QUESTION = {
   MULTIPLE_OPTION: "multiple-option",
   OPEN_RESPONSE: "open-response",
   CHECK_BOX: "check-box",
@@ -20,6 +20,41 @@ export class QuestionEditor extends HTMLElement {
       answers,
       lengthAnswers,
     };
+  }
+
+  questionData = {
+    id: null,
+    questionValue: "",
+    typeQuestion: "",
+    answers: [],
+    lengthAnswers: null,
+  };
+
+  isGenerate = false;
+
+  setDataQuestion({ id, questionValue, typeQuestion, answers, lengthAnswers }) {
+    this.questionData.id = id;
+    this.questionData.questionValue = questionValue;
+    this.questionData.typeQuestion = typeQuestion;
+    this.questionData.answers = answers;
+    this.questionData.lengthAnswers = lengthAnswers;
+    this.isGenerate = true;
+  }
+
+  generateQuestion() {
+    this.question.value = this.questionData.questionValue;
+    this.selected.value = this.questionData.typeQuestion;
+    this.answersContainer.innerHTML = "";
+    if (this.questionData.typeQuestion === TYPE_QUESTION.MULTIPLE_OPTION) {
+      this.answersContainer.append(new ListRadioItem());
+    } else if (this.questionData.typeQuestion === TYPE_QUESTION.OPEN_RESPONSE) {
+      const newTextAreaInput = new TextAreaInput();
+      newTextAreaInput.length = this.questionData.lengthAnswers;
+      this.answersContainer.append(newTextAreaInput);
+    } else if (this.questionData.typeQuestion === TYPE_QUESTION.CHECK_BOX) {
+      this.answersContainer.append(new ListCheckBoxInput());
+    }
+    this.typeQuestion = this.questionData.typeQuestion;
   }
 
   questionValue = "";
@@ -89,6 +124,10 @@ export class QuestionEditor extends HTMLElement {
       "input",
       this.handleInputQuestion.bind(this)
     );
+
+    if (this.isGenerate) {
+      this.generateQuestion();
+    }
   }
 
   disconnectedCallback() {
