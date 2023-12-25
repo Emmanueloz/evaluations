@@ -56,10 +56,6 @@ main {
 }
 
 @media screen and (min-width: 500px) {
-  #btnSave{
-    margin-right: 0px;
-  }
-  
   #ListQuestion{
     width: 90dvw;
     margin: 0 auto;
@@ -74,7 +70,9 @@ main {
 }
 
 @media screen and (min-width: 1024px) {
-
+  #btnSave{
+    margin-right: 0px;
+  }
 
   #ListQuestion{
     width: 650px;
