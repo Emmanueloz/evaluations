@@ -7,16 +7,34 @@ export class BaseListInput extends HTMLElement {
     this.type = type;
   }
   countInput = 0;
+  answers = [];
 
   dataAnswer() {
-    const answers = [];
+    this.answers = [];
     for (const item of this.list.children) {
-      answers.push(item.inputValue);
+      this.answers.push(item.inputValue);
     }
     return {
-      answers,
+      answers: this.answers,
       lengthAnswers: null,
     };
+  }
+
+  isGenerate = false;
+  /**
+   *
+   * @param {Array<string>} answers
+   */
+  setDataAnswer(answers) {
+    this.answers = answers;
+    this.isGenerate = true;
+    console.log(this.countInput);
+  }
+
+  generateAnswer() {
+    this.answers.forEach((value) => {
+      this.addInput(value);
+    });
   }
 
   handleEvent(event) {
@@ -35,10 +53,12 @@ export class BaseListInput extends HTMLElement {
     //console.log(this.countInput);
   }
 
-  addInput() {
-    //console.log(`Agregar ${this.type} input`);
+  addInput(inputValue = "Opción") {
+    console.log(this.countInput);
     this.sumCountInput();
-    this.list.append(new InputItem(this, this.type));
+    const newInputItem = new InputItem(this, this.type);
+    newInputItem.inputValue = inputValue;
+    this.list.append(newInputItem);
   }
 
   connectedCallback() {
@@ -59,7 +79,11 @@ export class BaseListInput extends HTMLElement {
     this.button = this.shadowRoot.querySelector("button");
     this.button.addEventListener("click", this);
     this.list = this.shadowRoot.querySelector("#list");
-    this.addInput();
+    if (this.isGenerate) {
+      this.generateAnswer();
+    } else {
+      this.addInput();
+    }
   }
 
   disconnectedCallback() {

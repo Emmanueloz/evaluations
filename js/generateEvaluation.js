@@ -19,6 +19,13 @@ export const evaluation = {
       answers: ["Op 1", "Op 2", "no se"],
       lengthAnswers: null,
     },
+    {
+      id: 2,
+      questionValue: "Pregunta 2",
+      typeQuestion: TYPE_QUESTION.MULTIPLE_OPTION,
+      answers: ["primera op", "Op 2", "opción multiple"],
+      lengthAnswers: null,
+    },
   ],
 };
 

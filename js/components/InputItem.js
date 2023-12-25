@@ -1,5 +1,5 @@
 export class InputItem extends HTMLElement {
-  inputValue = "Opción";
+  inputValue = "";
 
   constructor(listInput, typeInput) {
     super();

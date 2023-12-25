@@ -15,8 +15,8 @@ export class QuestionEditor extends HTMLElement {
       this.answersContainer.children[0].dataAnswer();
     return {
       id: null,
-      questionValue: this.questionValue,
-      typeQuestion: this.typeQuestion,
+      questionValue: this.questionData.questionValue,
+      typeQuestion: this.questionData.typeQuestion,
       answers,
       lengthAnswers,
     };
@@ -25,7 +25,7 @@ export class QuestionEditor extends HTMLElement {
   questionData = {
     id: null,
     questionValue: "",
-    typeQuestion: "",
+    typeQuestion: TYPE_QUESTION.MULTIPLE_OPTION,
     answers: [],
     lengthAnswers: null,
   };
@@ -42,23 +42,28 @@ export class QuestionEditor extends HTMLElement {
   }
 
   generateQuestion() {
-    this.question.value = this.questionData.questionValue;
+    //this.question.value = this.questionData.questionValue;
     this.selected.value = this.questionData.typeQuestion;
     this.answersContainer.innerHTML = "";
     if (this.questionData.typeQuestion === TYPE_QUESTION.MULTIPLE_OPTION) {
-      this.answersContainer.append(new ListRadioItem());
+      const newListRadioItem = new ListRadioItem();
+      newListRadioItem.setDataAnswer(this.questionData.answers);
+      this.answersContainer.append(newListRadioItem);
     } else if (this.questionData.typeQuestion === TYPE_QUESTION.OPEN_RESPONSE) {
       const newTextAreaInput = new TextAreaInput();
       newTextAreaInput.length = this.questionData.lengthAnswers;
       this.answersContainer.append(newTextAreaInput);
     } else if (this.questionData.typeQuestion === TYPE_QUESTION.CHECK_BOX) {
-      this.answersContainer.append(new ListCheckBoxInput());
+      console.log(this.questionData.answers);
+      const newListCheckBoxInput = new ListCheckBoxInput();
+      newListCheckBoxInput.setDataAnswer(this.questionData.answers);
+      this.answersContainer.append(newListCheckBoxInput);
     }
-    this.typeQuestion = this.questionData.typeQuestion;
+    //this.d.typeQuestion = this.questionData.typeQuestion;
   }
 
-  questionValue = "";
-  typeQuestion = TYPE_QUESTION.MULTIPLE_OPTION;
+  //questionValue = "";
+  //typeQuestion = TYPE_QUESTION.MULTIPLE_OPTION;
 
   constructor() {
     super();
@@ -66,7 +71,7 @@ export class QuestionEditor extends HTMLElement {
   }
 
   handleInputQuestion(e) {
-    this.questionValue = e.target.value;
+    this.questionData.questionValue = e.target.value;
   }
 
   handleOnSelect(e) {
@@ -79,7 +84,7 @@ export class QuestionEditor extends HTMLElement {
     } else if (e.target.value === TYPE_QUESTION.CHECK_BOX) {
       this.answersContainer.append(new ListCheckBoxInput());
     }
-    this.typeQuestion = e.target.value;
+    this.questionData.typeQuestion = e.target.value;
   }
 
   deleteQuestion() {
@@ -99,7 +104,7 @@ export class QuestionEditor extends HTMLElement {
         </style>
         <article>
           <div>
-            <input id="question" type="text" placeholder="Escribe tu pregunta">
+            <input id="question" type="text" placeholder="Escribe tu pregunta" value="${this.questionData.questionValue}">
             <select id="typeQuestion">
                 <option value="${TYPE_QUESTION.MULTIPLE_OPTION}">Opción multiple</option>
                 <option value="${TYPE_QUESTION.OPEN_RESPONSE}">Respuesta abierta</option>
